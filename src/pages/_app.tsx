@@ -3,6 +3,10 @@ import type { AppProps } from "next/app";
 import Link from "next/link";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const onClickButton = () => {
+    
+  };
+  
   return <>
   <header>
     <Link href={"/"}>index</Link>
@@ -10,6 +14,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <Link href={"/search"}>search</Link>
     &nbsp;
     <Link href={"/book/1"}>book/1</Link>
+    &nbsp;
+    <div>
+      <button onClick={onClickButton}>/test 페이지로 이동</button>
+    </div>
   </header>
   <Component {...pageProps} />
   </>;
