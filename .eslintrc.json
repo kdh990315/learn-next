@@ -11,9 +11,7 @@
     "semi": ["error", "always"],                // 세미콜론 항상 붙이기
     "quotes": ["error", "single"],              // 작은 따옴표 사용
     "indent": ["error", 2],                     // 2칸 들여쓰기
-    "no-console": "warn",                      // console.log는 경고
     "comma-dangle": ["error", "always-multiline"], // 여러 줄에서 마지막 쉼표 허용
-    "object-curly-spacing": ["error", "always"],  // 객체 중괄호 사이에 띄어쓰기
-    "@typescript-eslint/no-unused-vars": "warn"  // 사용 안 하는 변수 경고
+    "object-curly-spacing": ["error", "always"]  // 객체 중괄호 사이에 띄어쓰기
   }
 }
