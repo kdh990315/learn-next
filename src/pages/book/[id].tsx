@@ -60,7 +60,7 @@ export default function Page({
   return (
     <>
       <Head>
-        <title>{book.title}</title>
+        <title>한입북스 - {book.title}</title>
         <meta property="og:image" content={book.coverImgUrl} />
         <meta property="og:title" content={book.title} />
         <meta property="og:description" content={book.description} />
