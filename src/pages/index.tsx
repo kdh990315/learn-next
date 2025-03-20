@@ -7,8 +7,6 @@ import fetchBooks from '@/lib/fetch-books';
 import fetchRandomBooks from '@/lib/fetch-random-books';
 
 export const getStaticProps = async () => {
-  console.log('인덱스 페이지');
-
   const [allbooks, recoBooks] = await Promise.all([
     fetchBooks(),
     fetchRandomBooks(),
@@ -19,6 +17,7 @@ export const getStaticProps = async () => {
       allbooks,
       recoBooks,
     },
+    // revalidate: 3, //3초마다 업데이트
   };
 };
 
