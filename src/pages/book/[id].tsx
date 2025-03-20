@@ -1,12 +1,32 @@
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import style from './[id].module.css';
 import fetchOneBook from '@/lib/fetch-one-book';
+import { useRouter } from 'next/router';
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext,
-) => {
-  const id = context.params!.id;
+export const getStaticPaths = () => {
+  return {
+    paths: [
+      { params: { id: '1' } },
+      { params: { id: '2' } },
+      { params: { id: '3' } },
+    ],
+    fallback: true,
+    //false : 사전 렌더링이 되지 않은 페이지 들어오면 묻지도 따지지도 않고 notfound페이지
+    //blocking: SSR 방식으로 실시간으로 페이지 생성(사전 랜더링)
+    //true: fallback 상태의 페이지(props 데이터가 없는 상태의 페이지)부터 생성해 보내준다.
+  };
+};
+
+export const getStaticProps = async (context: GetStaticPropsContext) => {
+  const id = context.params!.id as string;
   const book = await fetchOneBook(+id);
+
+  if (!book) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: { book },
   };
@@ -14,7 +34,11 @@ export const getServerSideProps = async (
 
 export default function Page({
   book,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  const router = useRouter();
+
+  if (router.isFallback) return '로딩중입니다.';
+
   if (!book) return '문제가 발생했습니다. 다시 시도해주세요.';
 
   return (
