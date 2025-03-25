@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "semi": ["error", "always"],                // 세미콜론 항상 붙이기
+    "quotes": ["error", "single"],              // 작은 따옴표 사용
+    "indent": ["error", 2],                     // 2칸 들여쓰기
+    "comma-dangle": ["error", "always-multiline"], // 여러 줄에서 마지막 쉼표 허용
+    "object-curly-spacing": ["error", "always"]  // 객체 중괄호 사이에 띄어쓰기
+  }
+}
