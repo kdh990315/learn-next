@@ -13,7 +13,8 @@ export default async function Page({
       (
         await searchParams
       ).q
-    }`
+    }`,
+    { cache: "force-cache" }
   );
 
   if (!response.ok) {
